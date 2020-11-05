@@ -1,12 +1,16 @@
 <template>
-  <div class="Cars" v-for="c in cars" :key="c._id" :carProp="c">
+  <div class="Cars">
+    <div class="row">
+      <CarComponent  v-for="c in cars" :key="c._id" :car="c"/>
+    </div>
   </div>
 </template>
 
 <script>
 import { computed, onMounted } from 'vue'
 import { carService } from '../services/CarService'
-import AppState from '../AppState'
+import { AppState } from '../AppState'
+import CarComponent from '../components/CarComponent'
 export default {
   name: 'Cars',
   setup () {
@@ -17,7 +21,7 @@ export default {
       cars: computed(() => AppState.cars)
     }
   },
-  components: {}
+  components: { CarComponent }
 }
 </script>
 

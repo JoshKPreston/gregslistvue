@@ -1,20 +1,25 @@
 <template>
   <div class="Jerbs">
-    <JerbComponent />
+    <div class="row">
+      <JerbComponent  v-for="j in jerbs" :key="j._id" :jerb="j"/>
+    </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { jerbService } from '../services/JerbService'
 import JerbComponent from '../components/JerbComponent'
+import { AppState } from '../AppState'
 export default {
   name: 'Jerbs',
   setup () {
     onMounted(() => {
       jerbService.getAll()
     })
-    return {}
+    return {
+      jerbs: computed(() => AppState.jerbs)
+    }
   },
   components: { JerbComponent }
 }

@@ -1,20 +1,25 @@
 <template>
   <div class="Houses">
-    <HouseComponent />
+    <div class="row">
+      <HouseComponent  v-for="h in houses" :key="h._id" :house="h"/>
+    </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { houseService } from '../services/HouseService'
 import HouseComponent from '../components/HouseComponent'
+import { AppState } from '../AppState'
 export default {
   name: 'Houses',
   setup () {
     onMounted(() => {
       houseService.getAll()
     })
-    return {}
+    return {
+      houses: computed(() => AppState.houses)
+    }
   },
   components: { HouseComponent }
 }
