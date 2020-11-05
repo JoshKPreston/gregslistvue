@@ -1,16 +1,22 @@
 <template>
   <div class="Houses">
-    this is a house
+    <HouseComponent />
   </div>
 </template>
 
 <script>
+import { onMounted } from 'vue'
+import { houseService } from '../services/HouseService'
+import HouseComponent from '../components/HouseComponent'
 export default {
   name: 'Houses',
   setup () {
+    onMounted(() => {
+      houseService.getAll()
+    })
     return {}
   },
-  components: {}
+  components: { HouseComponent }
 }
 </script>
 

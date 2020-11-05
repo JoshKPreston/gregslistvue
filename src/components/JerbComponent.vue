@@ -1,7 +1,7 @@
 
 <template>
-  <div class="CarComponent">
-
+  <div class="JerbComponent">
+    state.jerbs
   </div>
 </template>
 
@@ -9,11 +9,10 @@
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 export default {
-  name: 'CarComponent',
-  props: ['carProp'],
-  setup (props) {
+  name: 'JerbComponent',
+  setup () {
     const state = reactive({
-      cars: computed(() => AppState.cars)
+      jerbs: computed(() => AppState.jerbs)
     })
 
     return {

@@ -1,16 +1,22 @@
 <template>
   <div class="Jerbs">
-    this is a jerb
+    <JerbComponent />
   </div>
 </template>
 
 <script>
+import { onMounted } from 'vue'
+import { jerbService } from '../services/JerbService'
+import JerbComponent from '../components/JerbComponent'
 export default {
   name: 'Jerbs',
   setup () {
+    onMounted(() => {
+      jerbService.getAll()
+    })
     return {}
   },
-  components: {}
+  components: { JerbComponent }
 }
 </script>
 

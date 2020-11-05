@@ -3,7 +3,7 @@ import { api } from './AxiosService'
 import { AppState } from '../AppState'
 
 class JerbService {
-  async getAllHouses () {
+  async getAll () {
     try {
       const res = await api.get('/jobs')
       AppState.jerbs = res.data.data

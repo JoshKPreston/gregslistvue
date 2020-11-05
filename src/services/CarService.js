@@ -3,7 +3,7 @@ import { api } from './AxiosService'
 import { AppState } from '../AppState'
 
 class CarService {
-  async getAllCars () {
+  async getAll () {
     try {
       const res = await api.get('/cars')
       AppState.cars = res.data.data

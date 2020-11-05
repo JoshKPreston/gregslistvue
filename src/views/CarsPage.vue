@@ -1,20 +1,23 @@
 <template>
-  <div class="Cars">
+  <div class="Cars" v-for="c in cars" :key="c._id" :carProp="c">
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { carService } from '../services/CarService'
+import AppState from '../AppState'
 export default {
   name: 'Cars',
   setup () {
     onMounted(() => {
-      carService.getAllCars()
+      carService.getAll()
     })
-    return {}
+    return {
+      cars: computed(() => AppState.cars)
+    }
   },
-  components: { }
+  components: {}
 }
 </script>
 
